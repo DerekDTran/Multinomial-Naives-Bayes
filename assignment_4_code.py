@@ -87,3 +87,19 @@ print(classification_report(Y_test, predict, digits = 4))
 np.mean(Y_test == predict)
 
 # repeat 5 times with different parameter choices and output parameters and accuracy
+results = pd.DataFrame(columns = ['alpha', 'prior', 'accuracy'])
+
+alpha = [0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9]
+prior = [True, False]
+
+for p in prior:
+    for a in alpha:
+        model = MultinomialNB(alpha = a, fit_prior = p)
+        model.fit(X_train, Y_train)
+        predict = model.predict(X_test)
+        model.score(X_test, Y_test)
+        confusion_matrix(Y_test, predict)
+        np.mean(Y_test == predict)
+        new_element = {'alpha':a, 'prior':p, 'accuracy':np.mean(Y_test == predict)}
+        results = results.append(new_element, ignore_index = True)
+print(results)
