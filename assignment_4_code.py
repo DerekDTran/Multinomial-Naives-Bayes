@@ -103,3 +103,10 @@ for p in prior:
         new_element = {'alpha':a, 'prior':p, 'accuracy':np.mean(Y_test == predict)}
         results = results.append(new_element, ignore_index = True)
 print(results)
+
+# using the numeric value of airline_sentiment, output the average sentiment of each airline
+airline_list = twitter['airline'].unique()
+airline_list
+
+twitter['airline'].value_counts(normalize=True)
+twitter.groupby('airline').mean()[['airline_sentiment']]
