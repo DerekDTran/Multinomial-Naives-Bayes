@@ -30,23 +30,8 @@ from sklearn.naive_bayes import MultinomialNB
 from sklearn.metrics import confusion_matrix, classification_report
 
 # read file using sys.argv
-#str(sys.argv)
-#len(sys.argv)
-#script = sys.argv[0]
-#fileName = sys.argv[1]
-
-dataset_url = 'https://github.com/calebcaptain1/Twitter-Reviews-Naive-Bayes/archive/main.zip'
-
-datapath = tf.keras.utils.get_file('Twitter-Reviews-Naive-Bayes-main.zip', cache_subdir=os.path.abspath('.'), origin = dataset_url, extract = True)
-
-data = os.path.abspath('Twitter-Reviews-Naive-Bayes-main')
-tweets = '/Tweets.csv'
-
-
-data
-path = data + tweets
-print(path)
-twitter_data = pd.read_csv(path)
+url = 'https://raw.githubusercontent.com/DerekDTran/Multinomial-Naives-Bayes/main/Tweets.csv'
+twitter_data = pd.read_csv(url)
 
 # read 3 columns into a dataframe
 twitter = twitter_data[['airline_sentiment', 'airline', 'text']]
